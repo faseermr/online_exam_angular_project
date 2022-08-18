@@ -1,0 +1,44 @@
+<app-add-classroom [getAllClassroom]="getAllClassroom"></app-add-classroom>
+
+<h1>Classroom List</h1>
+<div class="container">
+  <table class="table tableStyle">
+    <thead>
+      <tr>
+        <th class="col-1">ID</th>
+        <th>Grade</th>
+        <th class="col-2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cls of classrooms; let i = index">
+        <td>{{ cls.clsid }}</td>
+        <td>{{ cls.grade }}</td>
+        <td>
+          <button (click)="editClassroom(cls.clsid!)">Edit</button>
+          <button (click)="deleteClassroom(cls.clsid!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <table mat-table [dataSource]="data" class="mat-elevation-z8 border"> -->
+<!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+<!-- id Column -->
+<!-- <ng-container matColumnDef="clsid">
+    <th class="col-1" mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.clsid }}</td>
+  </ng-container> -->
+
+<!-- grade Column -->
+<!-- <ng-container matColumnDef="grade">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.grade }}</td>
+  </ng-container> -->
+
+<!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table> -->

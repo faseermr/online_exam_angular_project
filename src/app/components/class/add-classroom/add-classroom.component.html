@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="card m-4 p-4">
+    <form (submit)="saveClassroom()" autoComplete="off">
+      <div class="form-group mt-2">
+        <label>Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Grade 11"
+          name="grade"
+          [(ngModel)]="classroom.grade"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form>
+  </div>
+</div>
