@@ -12,17 +12,41 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" *ngIf="isAdminLogging">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/classroom">Classroom</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/subject">Subject</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+    </ul>
+
+    <ul class="navbar-nav mr-auto" *ngIf="isStudentLogging">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/exam">Exam TimeTable</a>
       </li>
     </ul>
+
+    <ul
+      class="navbar-nav mr-auto"
+      *ngIf="isAdminLogging || isStudentLogging; else loggedOut"
+    >
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sign-in" (click)="logout()"
+          >Sign out</a
+        >
+      </li>
+    </ul>
+    <ng-template #loggedOut>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/sign-in">Sign in</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin-sign-in">Admin</a>
+        </li>
+      </ul>
+    </ng-template>
   </div>
 </nav>
 <div>

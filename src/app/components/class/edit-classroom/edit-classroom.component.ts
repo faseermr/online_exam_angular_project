@@ -11,11 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditClassroomComponent implements OnInit {
   id: any;
   data?: Classroom;
-
-  na: string = 'Faseer';
-  classroom: Classroom = {
-    grade: '',
-  };
+  // classroom: Classroom = {
+  //   grade: '',
+  // };
   constructor(
     private classroomService: ClassroomService,
     private route: ActivatedRoute,
@@ -31,8 +29,9 @@ export class EditClassroomComponent implements OnInit {
     this.classroomService.getAll().subscribe({
       next: (res: any) => {
         this.data = res.data.find((e: any) => e.clsid === parseInt(this.id));
-        console.log(this.data!.grade);
+        //console.log(this.data!.grade);
       },
+      error: (e) => console.error(e),
     });
   };
 

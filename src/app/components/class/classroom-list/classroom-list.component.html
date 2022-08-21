@@ -15,8 +15,12 @@
         <td>{{ cls.clsid }}</td>
         <td>{{ cls.grade }}</td>
         <td>
-          <button (click)="editClassroom(cls.clsid!)">Edit</button>
-          <button (click)="deleteClassroom(cls.clsid!)">Delete</button>
+          <button class="btn-success" (click)="editClassroom(cls.clsid!)">
+            Edit
+          </button>
+          <button class="btn-danger" (click)="deleteClassroom(cls.clsid!)">
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>
