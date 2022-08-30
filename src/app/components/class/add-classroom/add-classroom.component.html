@@ -1,17 +1,31 @@
 <div class="container">
   <div class="card m-4 p-4">
-    <form (submit)="saveClassroom()" autoComplete="off">
+    <form (submit)="saveClassroom()" autoComplete="off" #add_class="ngForm">
       <div class="form-group mt-2">
         <label>Name:</label>
         <input
+          required
           type="text"
+          [class.is-invalid]="grade.invalid && grade.touched"
           class="form-control"
           placeholder="Grade 11"
+          #grade="ngModel"
           name="grade"
           [(ngModel)]="classroom.grade"
         />
+        <small
+          class="text-danger"
+          [class.d-none]="grade.valid || grade.untouched"
+          >required</small
+        >
       </div>
-      <button type="submit" class="btn btn-primary mt-4">Submit</button>
+      <button
+        [disabled]="add_class.form.invalid"
+        type="submit"
+        class="btn btn-primary mt-4"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </div>

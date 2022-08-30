@@ -1,27 +1,63 @@
 <div class="container">
-  <form (submit)="checkLogin()">
+  <form [formGroup]="loginForm" (submit)="checkLogin()">
     <div class="title">Login</div>
     <div class="input-box underline">
       <input
+        formControlName="email"
         type="text"
-        name="username"
         placeholder="Enter Your Email"
-        [(ngModel)]="data.email"
       />
+      <div
+        class="text-danger"
+        *ngIf="
+          loginForm.get('email')?.invalid || loginForm.get('email')?.touched
+        "
+      >
+        <small
+          class="text-danger"
+          *ngIf="
+            loginForm.get('email')?.touched &&
+            loginForm.get('email')?.errors?.['required']
+          "
+          >required</small
+        >
+        <small
+          class="text-danger"
+          *ngIf="
+            loginForm.get('email')?.touched &&
+            loginForm.get('email')?.errors?.['email']
+          "
+          >Invalid Email</small
+        >
+      </div>
+
       <div class="underline"></div>
     </div>
     <div class="input-box">
       <input
         type="password"
         name="password"
+        formControlName="password"
         placeholder="Enter Your Password"
-        [(ngModel)]="data.password"
       />
+      <small
+        class="text-danger"
+        [class.d-none]="
+          loginForm.get('password')?.valid ||
+          loginForm.get('password')?.untouched
+        "
+        >required</small
+      >
       <div class="underline"></div>
     </div>
 
     <div class="input-box button">
-      <input type="submit" name="" value="Login" />
+      <input
+        [disabled]="loginForm.invalid"
+        type="submit"
+        name=""
+        value="Login"
+      />
     </div>
   </form>
 </div>

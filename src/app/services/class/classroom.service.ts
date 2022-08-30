@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Classroom } from '../models/classroom.model';
+import { Classroom } from '../../models/classroom.model';
 const baseUrl = 'http://localhost:4000';
 
 @Injectable({

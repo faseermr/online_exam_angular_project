@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="card m-2 p-2">
+    <form #questionForm="ngForm" (submit)="postQuiz($event)">
+      <div class="form-group">
+        <label>Subject:</label>
+        <select
+          required
+          class="form-select"
+          name="subject"
+          #subject="ngModel"
+          [(ngModel)]="postQuestion.subid"
+          [class.is-invalid]="subject.invalid && subject.touched"
+        >
+          <option selected disabled value="">-- Select One --</option>
+          <option
+            *ngFor="let subject of subjectList; let i = index"
+            value="{{ subject.subid }}"
+          >
+            {{ subject.grade }} {{ subject.name }}
+          </option>
+        </select>
+        <small
+          class="text-danger"
+          [class.d-none]="subject.valid || subject.untouched"
+          >required</small
+        >
+      </div>
+      <div class="form-group mt-4">
+        <label>Question:</label>
+        <input
+          required
+          name="question"
+          type="text"
+          class="form-control"
+          placeholder="Enter Question"
+          #question="ngModel"
+          [(ngModel)]="postQuestion.question"
+          [class.is-invalid]="question.invalid && question.touched"
+        />
+      </div>
+      <small
+        class="text-danger"
+        [class.d-none]="question.valid || question.untouched"
+        >required</small
+      >
+      <div class="form-group mt-4">
+        <label>Answer 1:</label>
+        <input
+          required
+          name="answer1"
+          type="text"
+          class="form-control"
+          placeholder="Enter Answer 1"
+          #answer1="ngModel"
+          [(ngModel)]="postQuestion.ans1"
+          [class.is-invalid]="answer1.invalid && answer1.touched"
+        />
+        <small
+          class="text-danger"
+          [class.d-none]="answer1.valid || answer1.untouched"
+          >required</small
+        >
+      </div>
+      <div class="form-group mt-4">
+        <label>Answer 2:</label>
+        <input
+          required
+          name="answer2"
+          type="text"
+          class="form-control"
+          placeholder="Enter Answer 2"
+          #answer2="ngModel"
+          [(ngModel)]="postQuestion.ans2"
+          [class.is-invalid]="answer2.invalid && answer2.touched"
+        />
+      </div>
+      <small
+        class="text-danger"
+        [class.d-none]="answer2.valid || answer2.untouched"
+        >required</small
+      >
+      <div class="form-group mt-4">
+        <label>Answer 3:</label>
+        <input
+          required
+          name="answer3"
+          type="text"
+          class="form-control"
+          placeholder="Enter Answer 3"
+          #answer3="ngModel"
+          [(ngModel)]="postQuestion.ans3"
+          [class.is-invalid]="answer3.invalid && answer3.touched"
+        />
+      </div>
+      <small
+        class="text-danger"
+        [class.d-none]="answer3.valid || answer3.untouched"
+        >required</small
+      >
+      <div class="form-group mt-4">
+        <label>Answer 4:</label>
+        <input
+          required
+          name="answer4"
+          type="text"
+          class="form-control"
+          placeholder="Enter Answer 4"
+          #answer4="ngModel"
+          [(ngModel)]="postQuestion.ans4"
+          [class.is-invalid]="answer4.invalid && answer4.touched"
+        />
+      </div>
+      <small
+        class="text-danger"
+        [class.d-none]="answer4.valid || answer4.untouched"
+        >required</small
+      >
+      <div class="form-group mt-4">
+        <label>Correct Answer:</label>
+        <select
+          required
+          class="form-select"
+          name="correct_ans"
+          #c_ans="ngModel"
+          [(ngModel)]="postQuestion.correct_ans"
+          [class.is-invalid]="c_ans.invalid && c_ans.touched"
+        >
+          <option selected disabled value="">-- Select One --</option>
+          <option value="{{ postQuestion.ans1 }}">Answer 1</option>
+          <option value="{{ postQuestion.ans2 }}">Answer 2</option>
+          <option value="{{ postQuestion.ans3 }}">Answer 3</option>
+          <option value="{{ postQuestion.ans4 }}">Answer 4</option>
+        </select>
+        <small
+          class="text-danger"
+          [class.d-none]="c_ans.valid || c_ans.untouched"
+          >required</small
+        >
+      </div>
+      <button
+        [disabled]="questionForm.form.invalid"
+        type="submit"
+        class="btn btn-primary mt-4 mb-2"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

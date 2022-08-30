@@ -5,6 +5,7 @@ import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { ClassroomListComponent } from './components/class/classroom-list/classroom-list.component';
 import { EditClassroomComponent } from './components/class/edit-classroom/edit-classroom.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { PostQuestionComponent } from './components/post-question/post-question.component';
 import { SubjectListComponent } from './components/subject/subject-list/subject-list.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'subject', component: SubjectListComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'admin-sign-in', component: AdminSignInComponent },
+  { path: 'post-question', component: PostQuestionComponent },
   { path: 'dashboard', component: DashboardComponent },
 ];
 
@@ -28,4 +30,5 @@ export const routingComponents = [
   SignInComponent,
   AdminSignInComponent,
   DashboardComponent,
+  PostQuestionComponent,
 ];

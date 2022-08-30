@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
@@ -15,6 +16,14 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
+
+  get email() {
+    return this.loginForm.get('email');
+  }
   checkLogin = () => {
     this.authService
       .login({
