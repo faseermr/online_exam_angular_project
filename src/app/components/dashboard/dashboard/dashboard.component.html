@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<div *ngFor="let a of admin.admin" class="card">
+  <div>
+    <h2>Welcome {{ a.name }}</h2>
+  </div>
+  <div>
+    <label>ID</label>
+    <span>{{ a.id }}</span>
+  </div>
+  <div>
+    <label>Name</label>
+    <span>{{ a.name }}</span>
+  </div>
+
+  <div>
+    <label>Email</label>
+    <span>{{ a.email }}</span>
+  </div>
+</div>
+
+<div *ngFor="let s of student.student" class="card">
+  <div>
+    <h2>Welcome {{ s.name }}</h2>
+  </div>
+  <div>
+    <label>ID</label>
+    <span>{{ s.stuid }}</span>
+  </div>
+  <div>
+    <label>Name</label>
+    <span>{{ s.name }}</span>
+  </div>
+
+  <div>
+    <label>Email</label>
+    <span>{{ s.email }}</span>
+  </div>
+</div>

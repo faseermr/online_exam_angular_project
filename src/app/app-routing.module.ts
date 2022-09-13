@@ -5,6 +5,7 @@ import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { ClassroomListComponent } from './components/class/classroom-list/classroom-list.component';
 import { EditClassroomComponent } from './components/class/edit-classroom/edit-classroom.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { ExamTimetableComponent } from './components/exam-timetable/exam-timetable/exam-timetable.component';
 import { PostQuestionComponent } from './components/post-question/post-question.component';
 import { SubjectListComponent } from './components/subject/subject-list/subject-list.component';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'admin-sign-in', component: AdminSignInComponent },
   { path: 'post-question', component: PostQuestionComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'exam', component: ExamTimetableComponent },
 ];
 
 @NgModule({
@@ -31,4 +33,5 @@ export const routingComponents = [
   AdminSignInComponent,
   DashboardComponent,
   PostQuestionComponent,
+  ExamTimetableComponent,
 ];

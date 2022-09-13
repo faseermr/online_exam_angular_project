@@ -12,6 +12,7 @@ export class ClassroomListComponent implements OnInit {
   classrooms?: Classroom[];
   displayedColumns: string[] = ['clsid', 'grade'];
   data: any[] = [];
+
   // injecting classroom service via class constructor
   constructor(
     private classroomServices: ClassroomService,

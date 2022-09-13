@@ -25,20 +25,21 @@ export class SignInComponent implements OnInit {
     return this.loginForm.get('email');
   }
   checkLogin = () => {
-    this.authService
-      .login({
-        email: this.data.email,
-        password: this.data.password,
-      })
-      .subscribe({
-        next: (res) => {
+    //console.log(this.loginForm.value);
+
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        if (res.message) {
           alert(res.message);
           localStorage.setItem('student', JSON.stringify(res));
           this.router.navigateByUrl('/dashboard');
           setTimeout(() => {
             window.location.reload();
           }, 50);
-        },
-      });
+        } else {
+          alert(res.error);
+        }
+      },
+    });
   };
 }
