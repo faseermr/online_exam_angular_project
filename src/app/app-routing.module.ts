@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
 import { ExamTimetableComponent } from './components/exam-timetable/exam-timetable/exam-timetable.component';
 import { PostQuestionComponent } from './components/post-question/post-question.component';
 import { SubjectListComponent } from './components/subject/subject-list/subject-list.component';
+import { QuestionPaperComponent } from './components/question-paper/question-paper.component';
 
 const routes: Routes = [
   { path: 'classroom', component: ClassroomListComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'post-question', component: PostQuestionComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'exam', component: ExamTimetableComponent },
+  { path: 'question/student/:subid', component: QuestionPaperComponent },
 ];
 
 @NgModule({

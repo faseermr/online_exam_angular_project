@@ -11,11 +11,13 @@ import { AddClassroomComponent } from './components/class/add-classroom/add-clas
 import { routingComponents } from './app-routing.module';
 import { PostQuestionComponent } from './components/post-question/post-question.component';
 import { ExamTimetableComponent } from './components/exam-timetable/exam-timetable/exam-timetable.component';
+import { QuestionPaperComponent } from './components/question-paper/question-paper.component';
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     AddClassroomComponent,
+    QuestionPaperComponent,
     //ExamTimetableComponent,
   ],
   imports: [

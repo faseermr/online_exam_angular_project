@@ -13,4 +13,17 @@ export class SubjectService {
   getAll(): Observable<Subject[]> {
     return this.http.get<Subject[]>(`${baseUrl}/subject`);
   }
+
+  updateSubjectStatus(sub_status: any, subid: any): Observable<any> {
+    return this.http.put<any>(
+      `${baseUrl}/subject/update/${sub_status}/${subid}`,
+      null
+    );
+  }
+
+  getSubjectByGrade(grade: any, student: any): Observable<any> {
+    return this.http.get<Subject[]>(
+      `${baseUrl}/subject/grade/${grade}/${student}`
+    );
+  }
 }

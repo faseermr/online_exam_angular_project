@@ -4,4 +4,5 @@ export class Subject {
   clsid?: number;
   status?: number;
   grade?: string;
+  submit_id?: number;
 }

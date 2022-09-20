@@ -8,7 +8,24 @@
         <th>Action</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <tr *ngFor="let s of subjectListByGrade">
+        <td>{{ s.subid }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.grade }}</td>
+        <td>
+          <a *ngIf="s.submit_id! > 0" style="cursor: pointer; color: blue"
+            >Review</a
+          >
+          <a
+            *ngIf="s.submit_id == null"
+            style="cursor: pointer; color: blue"
+            routerLink="/question/student/{{ s.subid }}"
+            >Click</a
+          >
+        </td>
+      </tr>
+    </tbody>
   </table>
 </ng-template>
 
@@ -24,6 +41,30 @@
         <th className="col-2">Action</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <tr *ngFor="let s of subjectList">
+        <td>{{ s.subid }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.grade }}</td>
+        <td><a style="cursor: pointer; color: blue">Click</a></td>
+        <td>{{ s.status == 0 ? "Deactive" : "Active" }}</td>
+        <td *ngIf="s.status == 0">
+          <button
+            class="btn btn-success"
+            (click)="updateSubjectStatus(1, s.subid)"
+          >
+            Active
+          </button>
+        </td>
+        <td *ngIf="s.status == 1">
+          <button
+            class="btn btn-danger"
+            (click)="updateSubjectStatus(0, s.subid)"
+          >
+            Deactive
+          </button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </ng-template>
