@@ -14,7 +14,10 @@
         <td>{{ s.name }}</td>
         <td>{{ s.grade }}</td>
         <td>
-          <a *ngIf="s.submit_id! > 0" style="cursor: pointer; color: blue"
+          <a
+            *ngIf="s.submit_id! > 0"
+            style="cursor: pointer; color: blue"
+            routerLink="/question/review/{{ student.student[0].stuid }}"
             >Review</a
           >
           <a

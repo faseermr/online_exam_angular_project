@@ -1,0 +1,49 @@
+<div class="card p-2">
+  <div *ngFor="let q of question; let i = index">
+    <p class="question">Q{{ i + 1 }}) {{ q.qfield }}</p>
+
+    <div class="answer mt-2 p-2">
+      <input
+        type="radio"
+        value="{{ q.ans2 }}"
+        name="{{ q.qfield }}"
+        [checked]="q.ans1 == q.ans"
+        [disabled]="q.ans1 != q.ans"
+      />
+      <label class="label">{{ q.ans1 }}</label>
+    </div>
+    <div class="answer mt-2 p-2">
+      <input
+        type="radio"
+        value="{{ q.ans2 }}"
+        name="{{ q.qfield }}"
+        [checked]="q.ans2 == q.ans"
+        [disabled]="q.ans2 != q.ans"
+      />
+      <label class="label">{{ q.ans2 }}</label>
+    </div>
+    <div class="answer mt-2 p-2">
+      <input
+        type="radio"
+        value="{{ q.ans3 }}"
+        name="{{ q.qfield }}"
+        [checked]="q.ans3 == q.ans"
+        [disabled]="q.ans3 != q.ans"
+      />
+      <label class="label">{{ q.ans3 }}</label>
+    </div>
+    <div class="answer mt-2 p-2">
+      <input
+        type="radio"
+        value="{{ q.ans4 }}"
+        name="{{ q.qfield }}"
+        [checked]="q.ans4 == q.ans"
+        [disabled]="q.ans4 != q.ans"
+      />
+      <label class="label">{{ q.ans4 }}</label>
+    </div>
+    <div>
+      <p class="text-success" *ngIf="q.correct_ans == q.ans">Correct</p>
+    </div>
+  </div>
+</div>

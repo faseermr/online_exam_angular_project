@@ -9,6 +9,7 @@ import { ExamTimetableComponent } from './components/exam-timetable/exam-timetab
 import { PostQuestionComponent } from './components/post-question/post-question.component';
 import { SubjectListComponent } from './components/subject/subject-list/subject-list.component';
 import { QuestionPaperComponent } from './components/question-paper/question-paper.component';
+import { ReviewPaperComponent } from './components/review-paper/review-paper.component';
 
 const routes: Routes = [
   { path: 'classroom', component: ClassroomListComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'exam', component: ExamTimetableComponent },
   { path: 'question/student/:subid', component: QuestionPaperComponent },
+  { path: 'question/review/:stuid', component: ReviewPaperComponent },
 ];
 
 @NgModule({
@@ -36,4 +38,6 @@ export const routingComponents = [
   DashboardComponent,
   PostQuestionComponent,
   ExamTimetableComponent,
+  QuestionPaperComponent,
+  ReviewPaperComponent,
 ];

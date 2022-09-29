@@ -1,1 +1,53 @@
-<p>question-paper works!</p>
+<div class="card p-2">
+  <div *ngFor="let q of question | slice: indexFirst:indexLast; let i = index">
+    <p class="question">Q{{ questionNo }}) {{ q.qfield }}</p>
+    <form #ansForm="ngForm">
+      <div class="answer mt-2 p-2">
+        <input
+          type="radio"
+          value="{{ q.ans1 }}"
+          name="{{ i }}"
+          checked
+          [(ngModel)]="answer"
+        />
+        <label class="label">{{ q.ans1 }}</label>
+      </div>
+      <div class="answer mt-2 p-2">
+        <input
+          type="radio"
+          value="{{ q.ans2 }}"
+          name="{{ i }}"
+          checked="{{ q.ans2 == q.ans }}"
+          [(ngModel)]="answer"
+        />
+        <label class="label">{{ q.ans2 }}</label>
+      </div>
+      <div class="answer mt-2 p-2">
+        <input
+          type="radio"
+          value="{{ q.ans3 }}"
+          name="{{ i }}"
+          [defaultChecked]="true"
+          [(ngModel)]="answer"
+        />
+        <label class="label">{{ q.ans3 }}</label>
+      </div>
+      <div class="answer mt-2 p-2">
+        <input
+          type="radio"
+          value="{{ q.ans4 }}"
+          name="{{ i }}"
+          checked="{{ q.ans4 == q.ans }}"
+          [(ngModel)]="answer"
+        />
+        <label class="label">{{ q.ans4 }}</label>
+      </div>
+      <div class="mt-3">
+        <button (click)="prevButton(q.qid)" [disabled]="indexFirst == 0">
+          Prev
+        </button>
+        <button (click)="nextButton(q.qid)">Next</button>
+      </div>
+    </form>
+  </div>
+</div>
