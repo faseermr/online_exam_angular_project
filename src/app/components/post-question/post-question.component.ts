@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostQuestion } from 'src/app/models/question/question.model';
 import { Subject } from 'src/app/models/subject/subject.model';
 import { SubjectService } from 'src/app/services/subject/subject.service';
 
@@ -10,8 +11,8 @@ import { SubjectService } from 'src/app/services/subject/subject.service';
 export class PostQuestionComponent implements OnInit {
   constructor(private subjectService: SubjectService) {}
   subjectList?: Subject[];
-  postQuestion: any = {
-    subid: '',
+  postQuestion: PostQuestion = {
+    subid: 0,
     question: '',
     ans1: '',
     ans2: '',

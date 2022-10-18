@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Question } from 'src/app/models/question/question.model';
 import { Student } from 'src/app/models/student/student.model';
+import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-question-paper',
   templateUrl: './question-paper.component.html',
@@ -15,6 +16,10 @@ export class QuestionPaperComponent implements OnInit {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute
   ) {}
+
+  questionForm = new FormGroup({
+    answerField: new FormControl('11'),
+  });
 
   student = {
     student: [
@@ -91,10 +96,15 @@ export class QuestionPaperComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.question = res.data;
+          //console.log(res.data);
+          //  console.log(this.answer);
         },
       });
   };
 
+  setAnswer = (event: any) => {
+    this.answer = event.target.value;
+  };
   answerQuestion = (qid: any) => {
     console.log({
       qid: qid,
@@ -102,10 +112,18 @@ export class QuestionPaperComponent implements OnInit {
       ans: this.answer,
     });
 
-    // this.examService.answerQuestion({
-    //   qid:qid,
-    //   stuid: this.student.student[0].stuid,
-    //   ans:this.answer
-    // })
+    if (this.answer != '') {
+      this.examService
+        .answerQuestion({
+          qid: qid,
+          stuid: this.student.student[0].stuid,
+          ans: this.answer,
+        })
+        .subscribe({
+          next: (res) => {
+            this.answer = '';
+          },
+        });
+    }
   };
 }

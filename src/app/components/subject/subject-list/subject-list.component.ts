@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'src/app/models/subject/subject.model';
 import { SubjectService } from 'src/app/services/subject/subject.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { SubjectService } from 'src/app/services/subject/subject.service';
 export class SubjectListComponent implements OnInit {
   constructor(private subjectService: SubjectService) {}
 
+  subject?: Subject[];
+
   ngOnInit(): void {
     this.getAllSubject();
   }
@@ -16,7 +19,7 @@ export class SubjectListComponent implements OnInit {
   getAllSubject = () => {
     this.subjectService.getAll().subscribe({
       next: (res) => {
-        console.log(res);
+        this.subject = res;
       },
     });
   };
