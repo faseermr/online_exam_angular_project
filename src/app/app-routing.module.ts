@@ -10,11 +10,13 @@ import { PostQuestionComponent } from './components/post-question/post-question.
 import { SubjectListComponent } from './components/subject/subject-list/subject-list.component';
 import { QuestionPaperComponent } from './components/question-paper/question-paper.component';
 import { ReviewPaperComponent } from './components/review-paper/review-paper.component';
+import { EditSubjectComponent } from './components/subject/edit-subject/edit-subject.component';
 
 const routes: Routes = [
   { path: 'classroom', component: ClassroomListComponent },
   { path: 'classroom/:id', component: EditClassroomComponent },
   { path: 'subject', component: SubjectListComponent },
+  { path: 'subject/:id', component: EditSubjectComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'admin-sign-in', component: AdminSignInComponent },
   { path: 'post-question', component: PostQuestionComponent },
@@ -40,4 +42,5 @@ export const routingComponents = [
   ExamTimetableComponent,
   QuestionPaperComponent,
   ReviewPaperComponent,
+  EditSubjectComponent,
 ];

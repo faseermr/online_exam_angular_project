@@ -14,6 +14,7 @@ import { ExamTimetableComponent } from './components/exam-timetable/exam-timetab
 import { QuestionPaperComponent } from './components/question-paper/question-paper.component';
 import { ReviewPaperComponent } from './components/review-paper/review-paper.component';
 import { AddSubjectComponent } from './components/subject/add-subject/add-subject.component';
+import { EditSubjectComponent } from './components/subject/edit-subject/edit-subject.component';
 @NgModule({
   declarations: [
     AppComponent,

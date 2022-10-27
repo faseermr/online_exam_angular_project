@@ -5,8 +5,9 @@ import {
   FormGroupName,
   Validators,
 } from '@angular/forms';
-import { Classroom } from 'src/app/models/classroom.model';
+import { Classroom } from 'src/app/models/classroom/classroom.model';
 import { ClassroomService } from 'src/app/services/class/classroom.service';
+import { SubjectService } from 'src/app/services/subject/subject.service';
 
 @Component({
   selector: 'app-add-subject',
@@ -17,7 +18,10 @@ export class AddSubjectComponent implements OnInit {
   classrooms?: Classroom[];
   data: any[] = [];
 
-  constructor(private classroomServices: ClassroomService) {}
+  constructor(
+    private classroomServices: ClassroomService,
+    private subjectServices: SubjectService
+  ) {}
 
   ngOnInit(): void {
     this.getAllClassroom();
@@ -36,6 +40,15 @@ export class AddSubjectComponent implements OnInit {
         console.log(data.data);
       },
       error: (e) => console.error(e),
+    });
+  };
+
+  addSubject = () => {
+    console.log(this.subjectForm.value);
+    this.subjectServices.addSubject(this.subjectForm.value).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
     });
   };
 }

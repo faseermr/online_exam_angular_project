@@ -17,7 +17,9 @@
         <td>{{ s.name }}</td>
         <td>{{ s.grade }}</td>
         <td>
-          <button class="btn-success">Edit</button>
+          <button class="btn-success" (click)="editSubject(s.subid!)">
+            Edit
+          </button>
           <button class="btn-danger">Delete</button>
         </td>
       </tr>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'src/app/models/subject/subject.model';
 import { SubjectService } from 'src/app/services/subject/subject.service';
 
@@ -8,7 +9,7 @@ import { SubjectService } from 'src/app/services/subject/subject.service';
   styleUrls: ['./subject-list.component.css'],
 })
 export class SubjectListComponent implements OnInit {
-  constructor(private subjectService: SubjectService) {}
+  constructor(private subjectService: SubjectService, private router: Router) {}
 
   subject?: Subject[];
 
@@ -22,5 +23,9 @@ export class SubjectListComponent implements OnInit {
         this.subject = res;
       },
     });
+  };
+
+  editSubject = (subid: number) => {
+    this.router.navigateByUrl(`/subject/${subid}`);
   };
 }

@@ -26,4 +26,8 @@ export class SubjectService {
       `${baseUrl}/subject/grade/${grade}/${student}`
     );
   }
+
+  addSubject(data: any): Observable<any> {
+    return this.http.post<any>(`${baseUrl}/subject`, data);
+  }
 }
