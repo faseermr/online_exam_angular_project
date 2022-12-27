@@ -17,7 +17,15 @@ export class ExamService {
     return this.http.post(`${baseUrl}/answer`, data);
   }
 
+  // getStudentAnswer(student: any): Observable<any> {
+  //   return this.http.get<any[]>(`${baseUrl}/answer/student/${student}`);
+  // }
+
   getStudentAnswer(student: any): Observable<any> {
-    return this.http.get<any[]>(`${baseUrl}/answer/student/${student}`);
+    return this.http.get<any[]>(`${baseUrl}/answer/${student}`);
+  }
+
+  submitAnswer(data: any): Observable<any> {
+    return this.http.post(`${baseUrl}/answer/submit`, data);
   }
 }

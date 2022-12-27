@@ -9,3 +9,9 @@
 .label {
   padding-left: 10px;
 }
+
+.btn_submit {
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+}

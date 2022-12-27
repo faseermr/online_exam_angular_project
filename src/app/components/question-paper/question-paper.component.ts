@@ -14,7 +14,8 @@ export class QuestionPaperComponent implements OnInit {
   constructor(
     private examService: ExamService,
     private authService: AuthService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   questionForm = new FormGroup({
@@ -100,6 +101,23 @@ export class QuestionPaperComponent implements OnInit {
           //  console.log(this.answer);
         },
       });
+  };
+
+  submitAllAnswer = (subject: any) => {
+    let option = window.confirm('Are you sure');
+    if (option) {
+      this.examService
+        .submitAnswer({
+          student: this.student.student[0].stuid,
+          subject: subject,
+        })
+        .subscribe({
+          next: (res) => {
+            alert('Successfully submitted');
+            this.router.navigateByUrl(`/exam`);
+          },
+        });
+    }
   };
 
   setAnswer = (event: any) => {

@@ -1,5 +1,7 @@
 <div class="card p-2">
-  <div *ngFor="let q of question | slice: indexFirst:indexLast; let i = index">
+  <div
+    *ngFor="let q of question | slice : indexFirst : indexLast; let i = index"
+  >
     <p class="question">Q{{ questionNo }}) {{ q.qfield }}</p>
     <form>
       <div class="answer mt-2 p-2">
@@ -49,5 +51,10 @@
         <button (click)="nextButton(q.qid)">Next</button>
       </div>
     </form>
+  </div>
+  <div *ngIf="indexLast == question!.length + 1" style="margin: auto">
+    <button class="btn_submit" (click)="submitAllAnswer(subject_id)">
+      Submit
+    </button>
   </div>
 </div>

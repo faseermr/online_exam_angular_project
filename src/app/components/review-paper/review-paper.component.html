@@ -44,6 +44,7 @@
     </div>
     <div>
       <p class="text-success" *ngIf="q.correct_ans == q.ans">Correct</p>
+      <p class="text-danger" *ngIf="q.correct_ans != q.ans">Wrong</p>
     </div>
   </div>
 </div>
