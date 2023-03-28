@@ -21,7 +21,9 @@
         <label> Grade: </label>
         <select class="form-select" formControlName="grade">
           <option selected disabled value="">-- Select One --</option>
-          <option *ngFor="let c of classrooms">{{ c.grade }}</option>
+          <option *ngFor="let c of classrooms" [value]="c.clsid">
+            {{ c.grade }}
+          </option>
           <small
             class="text-danger"
             [class.d-none]="

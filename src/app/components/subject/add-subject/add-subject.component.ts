@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -23,6 +23,8 @@ export class AddSubjectComponent implements OnInit {
     private subjectServices: SubjectService
   ) {}
 
+  @Input('getAll') getAllSubject: any;
+
   ngOnInit(): void {
     this.getAllClassroom();
   }
@@ -37,18 +39,25 @@ export class AddSubjectComponent implements OnInit {
       next: (data: any) => {
         this.classrooms = data.data;
         this.data = data.data;
-        console.log(data.data);
+        // console.log(data.data);
       },
       error: (e) => console.error(e),
     });
   };
 
   addSubject = () => {
-    console.log(this.subjectForm.value);
-    this.subjectServices.addSubject(this.subjectForm.value).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-    });
+    //   console.log(this.subjectForm.value);
+    this.subjectServices
+      .addSubject({
+        subject: this.subjectForm.value.name,
+        clsid: this.subjectForm.value.grade,
+      })
+      .subscribe({
+        next: (res) => {
+          //  console.log(res);
+          alert(res.message);
+          this.getAllSubject();
+        },
+      });
   };
 }

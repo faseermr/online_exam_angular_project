@@ -25,6 +25,17 @@ export class SubjectListComponent implements OnInit {
     });
   };
 
+  deleteSubject = (subid: number) => {
+    let option = window.confirm('Are you want to delete');
+    if (option) {
+      this.subjectService.deleteSubject(subid).subscribe({
+        next: (res) => {
+          alert(res.message);
+          this.getAllSubject();
+        },
+      });
+    }
+  };
   editSubject = (subid: number) => {
     this.router.navigateByUrl(`/subject/${subid}`);
   };

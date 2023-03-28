@@ -1,4 +1,4 @@
-<app-add-subject></app-add-subject>
+<app-add-subject [getAll]="getAllSubject"></app-add-subject>
 
 <h1>Subject List</h1>
 <div class="container">
@@ -20,7 +20,9 @@
           <button class="btn-success" (click)="editSubject(s.subid!)">
             Edit
           </button>
-          <button class="btn-danger">Delete</button>
+          <button class="btn-danger" (click)="deleteSubject(s.subid!)">
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>

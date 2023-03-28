@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Classroom } from 'src/app/models/classroom/classroom.model';
 import { Subject } from 'src/app/models/subject/subject.model';
 import { ClassroomService } from 'src/app/services/class/classroom.service';
@@ -15,7 +15,8 @@ export class EditSubjectComponent implements OnInit {
   constructor(
     private classroomServices: ClassroomService,
     private subjectServices: SubjectService,
-    private route: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private route: Router
   ) {}
 
   classrooms?: Classroom[];
@@ -24,14 +25,14 @@ export class EditSubjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllClassroom();
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.activeRoute.snapshot.paramMap.get('id');
     this.getSubjectById(this.id);
-    console.log(this.data);
+    //  console.log(this.data);
   }
 
   subjectForm = new FormGroup({
     name: new FormControl(this.data?.name, [Validators.required]),
-    grade: new FormControl(this.data?.grade, [Validators.required]),
+    grade: new FormControl(this.data?.clsid, [Validators.required]),
   });
 
   getAllClassroom = () => {
@@ -39,10 +40,26 @@ export class EditSubjectComponent implements OnInit {
       next: (data: any) => {
         this.classrooms = data.data;
         this.data = data.data;
-        console.log(data.data);
+        //  console.log(data.data);
       },
       error: (e) => console.error(e),
     });
+  };
+
+  updateSubject = () => {
+    //  console.log(this.subjectForm.value);
+
+    this.subjectServices
+      .updateSubject(this.id, {
+        subject: this.subjectForm.value.name,
+        clsid: this.subjectForm.value.grade,
+      })
+      .subscribe({
+        next: (res) => {
+          alert(res.message);
+          this.route.navigateByUrl('/subject');
+        },
+      });
   };
 
   getSubjectById = (subid: number) => {
@@ -51,7 +68,11 @@ export class EditSubjectComponent implements OnInit {
         // console.log(res);
 
         this.data = res.find((e: any) => e.subid === parseInt(this.id));
-        console.log(this.data);
+        // console.log(this.data);
+        this.subjectForm = new FormGroup({
+          name: new FormControl(this.data?.name),
+          grade: new FormControl(this.data?.clsid),
+        });
       },
       error: (e) => console.error(e),
     });

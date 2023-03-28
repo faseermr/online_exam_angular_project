@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card m-4 p-4">
-    <form [formGroup]="subjectForm">
+    <form [formGroup]="subjectForm" (submit)="updateSubject()">
       <div class="form-group mt-2">
         <label> Name: </label>
         <input
@@ -21,7 +21,13 @@
         <label> Grade: </label>
         <select class="form-select" formControlName="grade">
           <option selected disabled value="">-- Select One --</option>
-          <option *ngFor="let c of classrooms">{{ c.grade }}</option>
+          <option
+            *ngFor="let c of classrooms"
+            [value]="c.clsid"
+            [selected]="c.clsid == subjectForm.value.grade"
+          >
+            {{ c.grade }}
+          </option>
           <small
             class="text-danger"
             [class.d-none]="
