@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card m-2 p-2">
-    <form #questionForm="ngForm" (submit)="postQuiz($event)">
+    <form #questionForm="ngForm" (submit)="postQuiz(questionForm)">
       <div class="form-group">
         <label>Subject:</label>
         <select

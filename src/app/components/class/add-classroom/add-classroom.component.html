@@ -1,6 +1,10 @@
 <div class="container">
   <div class="card m-4 p-4">
-    <form (submit)="saveClassroom()" autoComplete="off" #add_class="ngForm">
+    <form
+      (submit)="saveClassroom(add_class)"
+      autoComplete="off"
+      #add_class="ngForm"
+    >
       <div class="form-group mt-2">
         <label>Name:</label>
         <input

@@ -24,13 +24,17 @@ export class AdminSignInComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-
-          alert(res.message);
-          localStorage.setItem('admin', JSON.stringify(res));
-          this.router.navigateByUrl('/dashboard');
-          setTimeout(() => {
-            window.location.reload();
-          }, 50);
+          if (res.error) {
+            alert(res.error);
+          }
+          if (res.message) {
+            alert(res.message);
+            localStorage.setItem('admin', JSON.stringify(res));
+            this.router.navigateByUrl('/dashboard');
+            setTimeout(() => {
+              window.location.reload();
+            }, 50);
+          }
         },
       });
   };

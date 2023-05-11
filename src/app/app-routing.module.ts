@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'exam', component: ExamTimetableComponent },
   { path: 'question/student/:subid', component: QuestionPaperComponent },
+  { path: 'question/subject/:subid', component: QuestionPaperComponent },
   { path: 'question/review/:stuid', component: ReviewPaperComponent },
 ];
 

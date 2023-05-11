@@ -3,6 +3,7 @@ import {
   FormControl,
   FormGroup,
   FormGroupName,
+  NgForm,
   Validators,
 } from '@angular/forms';
 import { Classroom } from 'src/app/models/classroom/classroom.model';
@@ -57,6 +58,7 @@ export class AddSubjectComponent implements OnInit {
           //  console.log(res);
           alert(res.message);
           this.getAllSubject();
+          this.subjectForm.reset();
         },
       });
   };
