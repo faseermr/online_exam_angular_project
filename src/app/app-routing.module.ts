@@ -11,20 +11,61 @@ import { SubjectListComponent } from './components/subject/subject-list/subject-
 import { QuestionPaperComponent } from './components/question-paper/question-paper.component';
 import { ReviewPaperComponent } from './components/review-paper/review-paper.component';
 import { EditSubjectComponent } from './components/subject/edit-subject/edit-subject.component';
+import { AuthGuardGuard } from './guard/auth-guard.guard';
 
 const routes: Routes = [
-  { path: 'classroom', component: ClassroomListComponent },
-  { path: 'classroom/:id', component: EditClassroomComponent },
-  { path: 'subject', component: SubjectListComponent },
-  { path: 'subject/:id', component: EditSubjectComponent },
+  {
+    path: 'classroom',
+    component: ClassroomListComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'classroom/:id',
+    component: EditClassroomComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'subject',
+    component: SubjectListComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'subject/:id',
+    component: EditSubjectComponent,
+    canActivate: [AuthGuardGuard],
+  },
   { path: 'sign-in', component: SignInComponent },
   { path: 'admin-sign-in', component: AdminSignInComponent },
-  { path: 'post-question', component: PostQuestionComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'exam', component: ExamTimetableComponent },
-  { path: 'question/student/:subid', component: QuestionPaperComponent },
-  { path: 'question/subject/:subid', component: QuestionPaperComponent },
-  { path: 'question/review/:stuid', component: ReviewPaperComponent },
+  {
+    path: 'post-question',
+    component: PostQuestionComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'exam',
+    component: ExamTimetableComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'question/student/:subid',
+    component: QuestionPaperComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'question/subject/:subid',
+    component: QuestionPaperComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'question/review/:stuid',
+    component: ReviewPaperComponent,
+    canActivate: [AuthGuardGuard],
+  },
 ];
 
 @NgModule({
