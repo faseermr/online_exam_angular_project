@@ -39,16 +39,12 @@ export class EditSubjectComponent implements OnInit {
     this.classroomServices.getAll().subscribe({
       next: (data: any) => {
         this.classrooms = data.data;
-        this.data = data.data;
-        //  console.log(data.data);
       },
       error: (e) => console.error(e),
     });
   };
 
   updateSubject = () => {
-    //  console.log(this.subjectForm.value);
-
     this.subjectServices
       .updateSubject(this.id, {
         subject: this.subjectForm.value.name,
@@ -65,10 +61,7 @@ export class EditSubjectComponent implements OnInit {
   getSubjectById = (subid: number) => {
     this.subjectServices.getAll().subscribe({
       next: (res: any) => {
-        // console.log(res);
-
         this.data = res.find((e: any) => e.subid === parseInt(this.id));
-        // console.log(this.data);
         this.subjectForm = new FormGroup({
           name: new FormControl(this.data?.name),
           grade: new FormControl(this.data?.clsid),

@@ -32,7 +32,7 @@ export class SubjectService {
   }
 
   updateSubject(subid: any, data: any): Observable<any> {
-    return this.http.patch<any>(`${baseUrl}/subject/update/${subid}`, data);
+    return this.http.put<any>(`${baseUrl}/subject/update/${subid}`, data);
   }
 
   deleteSubject(subid: any): Observable<any> {
